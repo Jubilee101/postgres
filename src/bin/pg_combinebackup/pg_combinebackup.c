@@ -821,11 +821,11 @@ parse_oid(char *s, Oid *result)
  */
 static void
 process_directory_recursively(Oid tsoid,
-							  char *input_directory,
-							  char *output_directory,
-							  char *relative_path,
-							  int n_prior_backups,
-							  char **prior_backup_dirs,
+							  char *input_directory, // base dir of current incr backup/tablespace
+							  char *output_directory, // base dir of resulting full backup/tablespace
+							  char *relative_path, // internal relative path based on input/output dir
+							  int n_prior_backups, // number of backups
+							  char **prior_backup_dirs, // valid prior backups from oldest(the full base) to newest
 							  manifest_data **manifests,
 							  manifest_writer *mwriter,
 							  cb_options *opt)
